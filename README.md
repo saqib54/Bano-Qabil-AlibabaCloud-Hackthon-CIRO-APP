@@ -1,5 +1,8 @@
 <div align="center">
 
+![header](https://capsule-render.vercel.app/api?type=waving&color=0:00F0FF,100:FF007F&height=200&section=header&text=Crisis%20Intelligence%20and%20Response%20Orchestrator&fontSize=26&fontColor=ffffff)
+
+</div>
 <!-- ═══════════════════════════════════════════════════════════ HERO -->
 
 <br/>
