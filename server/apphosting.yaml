@@ -1,0 +1,28 @@
+# Firebase App Hosting configuration for the CIRO backend API.
+# Docs: https://firebase.google.com/docs/app-hosting/configure
+runConfig:
+  # Free hackathon tier: scale to zero when idle, single instance
+  # (SQLite is local to the instance by design).
+  minInstances: 0
+  maxInstances: 1
+  concurrency: 80
+
+env:
+  - variable: NODE_ENV
+    value: production
+  - variable: FRONTEND_URL
+    value: "*"
+  - variable: FIREBASE_PROJECT_ID
+    value: alibaba-cloud-hackthon
+  - variable: JWT_SECRET
+    value: 52616e008d2236b2310b465e7043bf7072ecd2d5639fa698a7a3bb4b27f97bd8
+  - variable: JWT_REFRESH_SECRET
+    value: b041d20e63ae7877e165f83248bd44449d906aaa60a6535d6a09f198699632db
+  - variable: JWT_ACCESS_EXPIRES_IN
+    value: 15m
+  - variable: JWT_REFRESH_EXPIRES_IN
+    value: 7d
+  - variable: GOOGLE_MAPS_API_KEY
+    value: AIzaSyDTsZNV8soH96-Od6ksMrDDx3mCBQbWR80
+  - variable: POINT_FORECAST_API_KEY
+    value: kB7ew13mZszZkRolDApCGgbqtStldVL6

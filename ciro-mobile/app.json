@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "CIRO",
+    "slug": "ciro-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "ciromobile",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pak.ciromobile"
+    },
+    "android": {
+      "package": "com.pak.ciromobile",
+      "adaptiveIcon": {
+        "backgroundColor": "#0A0E1A",
+        "foregroundImage": "./assets/images/icon.png"
+      },
+      "edgeToEdgeEnabled": true
+    },
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#0A0E1A"
+        }
+      ]
+    ],
+    "experiments": {
+      "reactCompiler": false
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c5b22dba-aa6a-428f-9d43-82ffe55a9eaf"
+      }
+    }
+  }
+}

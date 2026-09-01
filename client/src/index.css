@@ -1,0 +1,449 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-surface text-ink font-sans;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Safe area padding for notched devices */
+  #root {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  /* Smooth scroll */
+  * {
+    scroll-behavior: smooth;
+  }
+  /* Prevent text selection on interactive elements */
+  button, a, [role="button"] {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  /* Custom scrollbar for webkit */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+  }
+  /* Focus visible only for keyboard */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-2xl border border-line shadow-card;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-line bg-white px-4 py-2.5 text-sm text-ink
+      placeholder:text-ink-soft/70 outline-none transition
+      focus:border-brand focus:ring-2 focus:ring-brand/20;
+  }
+
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5
+      text-sm font-semibold text-white transition hover:bg-brand-dark
+      active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-danger px-4 py-2.5
+      text-sm font-semibold text-white transition hover:brightness-110
+      active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-line
+      bg-white px-4 py-2.5 text-sm font-semibold text-ink transition hover:bg-surface
+      active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+
+  /* Glass morphism card */
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20;
+  }
+
+  /* Gradient text — brilliant headings */
+  .text-gradient {
+    background: linear-gradient(120deg, #2563EB 0%, #7C3AED 50%, #DB2777 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-fire {
+    background: linear-gradient(120deg, #E11D48 0%, #F59E0B 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Brilliant hero card */
+  .hero-gradient {
+    background: linear-gradient(135deg, #E11D48 0%, #F43F5E 45%, #F97316 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-gradient::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 0%, rgb(255 255 255 / 0.25), transparent 50%),
+      radial-gradient(ellipse at 90% 100%, rgb(255 255 255 / 0.12), transparent 45%);
+    pointer-events: none;
+  }
+
+  .brand-gradient {
+    background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 50%, #7C3AED 100%);
+  }
+
+  /* Shimmer sweep on hover for cards */
+  .card-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .card-shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgb(255 255 255 / 0.5) 50%, transparent 60%);
+    transform: translateX(-120%);
+    transition: none;
+    pointer-events: none;
+  }
+  .card-shimmer:hover::after {
+    animation: shimmer-sweep 0.9s ease;
+  }
+
+  /* Mobile bottom nav safe area */
+  .mobile-nav {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Touch-friendly tap target */
+  .tap-target {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* ── Prototype design system (§70) ─────────────────────── */
+
+  /* Curved arch dividers — light panel bulging over navy (and vice-versa) */
+  .arch-b {
+    border-bottom-left-radius: 50% 42px;
+    border-bottom-right-radius: 50% 42px;
+  }
+  .arch-t {
+    border-top-left-radius: 50% 42px;
+    border-top-right-radius: 50% 42px;
+  }
+
+  /* Prototype checkbox — rounded blue outline square */
+  .proto-check {
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border: 2px solid #2563EB;
+    border-radius: 6px;
+    background: transparent;
+    display: inline-grid;
+    place-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .proto-check::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    transform: scale(0);
+    transition: transform 0.12s ease-in-out;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 84% 4%, 39% 70%);
+    background: #fff;
+  }
+  .proto-check:checked {
+    background: #2563EB;
+  }
+  .proto-check:checked::before {
+    transform: scale(1);
+  }
+
+  /* Prototype toggle — blue pill switch */
+  .proto-toggle {
+    appearance: none;
+    width: 52px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 999px;
+    background: #C3CEE3;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .proto-toggle::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgb(10 30 66 / 0.3);
+    transition: transform 0.2s ease;
+  }
+  .proto-toggle:checked {
+    background: #2563EB;
+  }
+  .proto-toggle:checked::before {
+    transform: translateX(22px);
+  }
+
+  /* Bottom sheet with drag handle */
+  .sheet {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 90;
+    max-height: 82vh;
+    overflow-y: auto;
+    border-radius: 28px 28px 0 0;
+    background: #F7F9FC;
+    box-shadow: 0 -12px 40px rgb(7 21 49 / 0.25);
+    animation: slide-up 0.28s ease-out;
+  }
+  .sheet::before {
+    content: '';
+    display: block;
+    width: 56px;
+    height: 5px;
+    border-radius: 999px;
+    background: #C3CEE3;
+    margin: 12px auto 0;
+  }
+
+  /* Input with leading icon */
+  .input-icon {
+    @apply w-full rounded-xl border border-line bg-white py-3 pl-11 pr-4 text-sm text-ink
+      placeholder:text-ink-soft/60 outline-none transition
+      focus:border-brand focus:ring-2 focus:ring-brand/20;
+  }
+}
+
+/* Animations */
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(120%); }
+}
+@keyframes float-orb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+@keyframes slide-up {
+  0% { transform: translateY(100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes slide-down {
+  0% { transform: translateY(-20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-bounce-gentle { animation: bounce-gentle 2s ease-in-out infinite; }
+.animate-slide-up { animation: slide-up 0.3s ease-out; }
+.animate-slide-down { animation: slide-down 0.3s ease-out; }
+.animate-fade-in { animation: fade-in 0.3s ease-out; }
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, #E2E8F0 25%, #F1F5F9 50%, #E2E8F0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+/* Mobile-specific overrides */
+@media (max-width: 768px) {
+  .card {
+    border-radius: 16px;
+  }
+  /* Larger touch targets on mobile */
+  .btn-primary, .btn-secondary, .btn-danger {
+    min-height: 44px;
+  }
+  /* Prevent zoom on input focus */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+  /* Tighter page padding on mobile */
+  main {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  /* Cards should be edge-to-edge feeling */
+  .card {
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+  .btn-primary, .btn-secondary, .btn-danger {
+    font-size: 0.8125rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+/* Landscape mode — hide bottom nav */
+@media (max-height: 500px) and (orientation: landscape) {
+  nav.fixed.bottom-0 {
+    display: none;
+  }
+  main {
+    padding-bottom: 2rem;
+  }
+}
+
+/* Reduced motion — respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   Dark mode — semantic token remap.
+   The design system uses a small set of semantic tokens
+   (surface / ink / line / white cards), so remapping them
+   under .dark themes the entire app consistently.
+   ───────────────────────────────────────────────────────── */
+.dark {
+  color-scheme: dark;
+}
+.dark body {
+  background-color: #0B1220;
+  color: #E2E8F0;
+}
+.dark .card,
+.dark .bg-white {
+  background-color: #131C31 !important;
+}
+.dark .card {
+  border-color: #24324E;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.4);
+}
+.dark .border-line {
+  border-color: #24324E !important;
+}
+.dark .text-ink {
+  color: #F1F5F9 !important;
+}
+.dark .text-ink-soft {
+  color: #93A5C1 !important;
+}
+.dark .bg-surface {
+  background-color: #0B1220 !important;
+}
+.dark .input,
+.dark .input-icon {
+  background-color: #0F1830;
+  border-color: #24324E;
+  color: #E2E8F0;
+}
+.dark .input::placeholder,
+.dark .input-icon::placeholder {
+  color: rgb(147 165 193 / 0.6);
+}
+.dark select {
+  background-color: #0F1830;
+  color: #E2E8F0;
+}
+.dark .btn-secondary {
+  background-color: #131C31;
+  border-color: #24324E;
+  color: #E2E8F0;
+}
+.dark .btn-secondary:hover {
+  background-color: #1B2742;
+}
+.dark .glass {
+  background: rgb(19 28 49 / 0.7);
+  border-color: rgb(255 255 255 / 0.08);
+}
+.dark .skeleton {
+  background: linear-gradient(90deg, #1B2742 25%, #24324E 50%, #1B2742 75%);
+  background-size: 200% 100%;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #33415C;
+}
+.dark .sheet {
+  background: #101A30;
+}
+.dark .proto-toggle {
+  background: #33415C;
+}
+/* Status/soft tones get darker backgrounds for contrast */
+.dark .bg-danger-soft { background-color: rgb(225 29 72 / 0.14) !important; }
+.dark .bg-safe-soft  { background-color: rgb(16 185 129 / 0.14) !important; }
+.dark .bg-warn-soft  { background-color: rgb(245 158 11 / 0.14) !important; }
+.dark .bg-brand-soft { background-color: rgb(37 99 235 / 0.16) !important; }
+.dark .bg-peri-soft  { background-color: rgb(30 58 110 / 0.35) !important; }
+
+/* Urdu font — Nastaleeq-friendly fallback for RTL mode */
+html[lang='ur'] body {
+  font-family: 'Inter', 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.9;
+}
+/* RTL layout — flip fixed-left sidebar + content offset in Urdu mode */
+html[dir='rtl'] aside.fixed.left-0 {
+  left: auto;
+  right: 0;
+}
+@media (min-width: 768px) {
+  html[dir='rtl'] main.md\:ml-64 {
+    margin-left: 0;
+    margin-right: 16rem;
+  }
+}
+

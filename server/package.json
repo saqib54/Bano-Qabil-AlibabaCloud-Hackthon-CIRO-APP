@@ -1,0 +1,39 @@
+{
+  "name": "ciro-server",
+  "version": "1.0.0",
+  "description": "CIRO - Crisis Intelligence & Response Orchestrator (Backend)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "db:migrate": "node database/migrate.js",
+    "db:seed": "node database/seeds/seed.js",
+    "db:reset": "node database/migrate.js && node database/seeds/seed.js"
+  },
+  "keywords": [
+    "ciro",
+    "emergency",
+    "crisis",
+    "disaster-management"
+  ],
+  "author": "CIRO Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.10.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^9.0.6",
+    "ws": "^8.18.0",
+    "zod": "^3.24.1"
+  }
+}

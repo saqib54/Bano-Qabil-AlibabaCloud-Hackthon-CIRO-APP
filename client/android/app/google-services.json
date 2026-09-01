@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "11990113712",
+    "project_id": "alibaba-cloud-hackthon",
+    "storage_bucket": "alibaba-cloud-hackthon.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:11990113712:android:4ede96bf6a07aaa23fca75",
+        "android_client_info": {
+          "package_name": "com.ciro.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "11990113712-o9mjjqdf0bp1p2lpuhkti4kqp24ide2g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ciro.app",
+            "certificate_hash": "1554f2c6dd8422251d358afab16dde52be521b1f"
+          }
+        },
+        {
+          "client_id": "11990113712-8nur4mhqhht4rbngku0cskjt56tl1hjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCB5qORZxbZUU-63iQ7tvCGHgcyj0YCmSU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "11990113712-8nur4mhqhht4rbngku0cskjt56tl1hjm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

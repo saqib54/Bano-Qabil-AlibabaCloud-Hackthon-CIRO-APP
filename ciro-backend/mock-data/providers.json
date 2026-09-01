@@ -1,0 +1,15 @@
+{
+  "rescue_teams": [
+    {"id": "r1", "name": "Rescue 1122 Unit A", "lat": 33.7100, "lng": 73.0000, "status": "available", "type": "flood_rescue", "eta_minutes": 8},
+    {"id": "r2", "name": "Rescue 1122 Unit B", "lat": 33.6800, "lng": 72.9900, "status": "available", "type": "flood_rescue", "eta_minutes": 12},
+    {"id": "r3", "name": "Civil Defense Team", "lat": 33.7300, "lng": 73.0500, "status": "available", "type": "general", "eta_minutes": 15}
+  ],
+  "hospitals": [
+    {"id": "h1", "name": "PIMS Hospital", "lat": 33.7204, "lng": 73.0694, "beds_available": 45, "trauma_unit": true},
+    {"id": "h2", "name": "Polyclinic Hospital", "lat": 33.7050, "lng": 73.0680, "beds_available": 30, "trauma_unit": false}
+  ],
+  "alternate_routes": [
+    {"id": "ar1", "from": "G-10", "to": "City Center", "via": "Kashmir Highway", "estimated_time": "18 mins", "status": "clear"},
+    {"id": "ar2", "from": "Murree Road", "to": "Rawalpindi", "via": "GT Road bypass", "estimated_time": "25 mins", "status": "clear"}
+  ]
+}

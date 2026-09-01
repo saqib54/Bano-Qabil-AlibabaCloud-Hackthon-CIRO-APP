@@ -1,0 +1,16 @@
+{
+  "social_posts": [
+    {"id": "s1", "text": "G-10 mein pani bhar gaya hai, gaariyan phans gayi hain", "timestamp": "2025-01-15T14:30:00", "location": "G-10, Islamabad", "lat": 33.6938, "lng": 72.9862, "source": "twitter"},
+    {"id": "s2", "text": "Flash flood on Murree Road, traffic completely blocked", "timestamp": "2025-01-15T14:35:00", "location": "Murree Road, Rawalpindi", "lat": 33.6550, "lng": 73.0769, "source": "facebook"},
+    {"id": "s3", "text": "Bijli ka khamba gir gaya F-7 markaz ke paas, bohot khatarnak", "timestamp": "2025-01-15T14:28:00", "location": "F-7, Islamabad", "lat": 33.7215, "lng": 73.0571, "source": "twitter"},
+    {"id": "s4", "text": "Heavy smoke coming from industrial area near I-9, possible fire", "timestamp": "2025-01-15T14:40:00", "location": "I-9, Islamabad", "lat": 33.6689, "lng": 73.0910, "source": "resident_app"}
+  ],
+  "weather_alerts": [
+    {"id": "w1", "type": "heavy_rainfall", "severity": "HIGH", "area": "Islamabad", "message": "Heavy rainfall expected next 3 hours, 45mm precipitation", "timestamp": "2025-01-15T14:00:00"},
+    {"id": "w2", "type": "heatwave", "severity": "MEDIUM", "area": "Lahore", "message": "Temperature exceeding 42°C, heatwave warning", "timestamp": "2025-01-15T13:00:00"}
+  ],
+  "traffic_reports": [
+    {"id": "t1", "location": "G-10 Interchange", "congestion_level": "CRITICAL", "lat": 33.6938, "lng": 72.9862, "affected_routes": ["GT Road", "Murree Road"], "timestamp": "2025-01-15T14:32:00"},
+    {"id": "t2", "location": "Zero Point", "congestion_level": "HIGH", "lat": 33.7215, "lng": 73.0690, "affected_routes": ["Jinnah Avenue"], "timestamp": "2025-01-15T14:20:00"}
+  ]
+}

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#2563EB" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="CIRO" />
+    <meta
+      name="description"
+      content="CIRO — Crisis Intelligence & Response Orchestrator. AI-powered emergency response and citizen safety platform."
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+    <title>CIRO — Crisis Intelligence & Response Orchestrator</title>
+    <style>
+      /* Splash screen — shown before React hydrates */
+      #ciro-splash {
+        position: fixed; inset: 0; z-index: 99999;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #1d4ed8 100%);
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+      }
+      #ciro-splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+      #ciro-splash .logo-ring {
+        width: 100px; height: 100px; border-radius: 28px;
+        background: rgba(255,255,255,0.15); backdrop-filter: blur(10px);
+        display: flex; align-items: center; justify-content: center;
+        animation: pulse-ring 2s ease-in-out infinite;
+      }
+      #ciro-splash .logo-icon {
+        width: 56px; height: 56px; border-radius: 16px;
+        background: white; display: flex; align-items: center; justify-content: center;
+        animation: scale-in 0.6s ease-out;
+      }
+      #ciro-splash .logo-icon svg { width: 32px; height: 32px; }
+      #ciro-splash h1 {
+        margin-top: 24px; color: white; font-size: 28px; font-weight: 800;
+        letter-spacing: 6px; animation: fade-up 0.8s ease-out 0.3s both;
+      }
+      #ciro-splash p {
+        margin-top: 8px; color: rgba(255,255,255,0.7); font-size: 12px;
+        letter-spacing: 2px; animation: fade-up 0.8s ease-out 0.5s both;
+      }
+      #ciro-splash .loader {
+        margin-top: 40px; width: 40px; height: 4px; border-radius: 4px;
+        background: rgba(255,255,255,0.2); overflow: hidden;
+        animation: fade-up 0.8s ease-out 0.7s both;
+      }
+      #ciro-splash .loader::after {
+        content: ''; display: block; width: 60%; height: 100%;
+        background: white; border-radius: 4px;
+        animation: loading-bar 1.5s ease-in-out infinite;
+      }
+      @keyframes pulse-ring {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.05); opacity: 0.8; }
+      }
+      @keyframes scale-in {
+        0% { transform: scale(0); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      @keyframes fade-up {
+        0% { transform: translateY(16px); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+      }
+      @keyframes loading-bar {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(250%); }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Splash screen -->
+    <div id="ciro-splash">
+      <div class="logo-ring">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+      </div>
+      <h1>CIRO</h1>
+      <p>CRISIS INTELLIGENCE</p>
+      <div class="loader"></div>
+    </div>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      // Register service worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
+  </body>
+</html>
