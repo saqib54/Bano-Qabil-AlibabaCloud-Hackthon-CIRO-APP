@@ -11,6 +11,8 @@
 
 <br/><br/>
 
+try here: https://ciroquick.netlify.app/login
+
 # Crisis Intelligence & Response Orchestrator
 
 ### *Secure · Connected · Human-led*
